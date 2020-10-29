@@ -1,6 +1,6 @@
 # KonnektingFlashStorage library for Arduino
 
-*NOTE:* This is a fork of cmaglie's "FlashStorage" with some extra modifications to fit KONNEKTING needs.
+*NOTE:* This is a fork of cmaglie's "FlashStorage" with some extra modifications to fit KONNEKTING needs. If you want the "original", visit https://github.com/cmaglie/FlashStorage
 
 The KonnektingFlashStorage library aims to provide a convenient way to store and retrieve
 user's data using the non-volatile flash memory of microcontrollers.
