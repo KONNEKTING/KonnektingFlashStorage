@@ -1,6 +1,8 @@
-# FlashStorage library for Arduino
+# KonnektingFlashStorage library for Arduino
 
-The FlashStorage library aims to provide a convenient way to store and retrieve
+*NOTE:* This is a fork of cmaglie's "FlashStorage" with some extra modifications to fit KONNEKTING needs.
+
+The KonnektingFlashStorage library aims to provide a convenient way to store and retrieve
 user's data using the non-volatile flash memory of microcontrollers.
 
 The flash memory, due to it's properties, is generally used to store the firmware
@@ -58,14 +60,14 @@ int user_age = age_storage.read();
 ### Using the alternative EEPROM-like API
 
 If you include `FlashAsEEPROM.h` you'll get an EEPROM emulation with the internal flash memory.
-See [EmulateEEPROM](https://github.com/cmaglie/FlashStorage/tree/master/examples/EmulateEEPROM/EmulateEEPROM.ino) sketch for an example.
+See [EmulateEEPROM](https://gitlab.com/konnekting/KonnektingFlashStorage/-/tree/master/examples/EmulateEEPROM/EmulateEEPROM.ino) sketch for an example.
 
 The API is very similar to the well known Arduino EEPROM.h API but with two additional functions:
 
 * `EEPROM.setStorage(FlashClass*)` is required to point the EEPROM implementation to the underlying flashclass pointer. This method in mandatory.
 * `EEPROM.setStorageForceValid(FlashClass*)` same as `setStorage()`, but forces the valid flag to true before EEPROM gets initialized. This can be useful if take care of the validity-status by yourself or if you don't care about the validity at all.
 * `EEPROM.isValid()` returns `true` if data in the EEPROM is valid or, in other words, if the data has been written at least once, otherwise EEPROM data is "undefined" and the function returns `false`.
-* `EEPROM.commit()` store the EEPROM data in flash. Use this with care: Every call writes the complete EEPROM data to flash. This will reduce the remaining flash-write-cycles. Don't call this method in a loop or [you will kill your flash soon](https://github.com/cmaglie/FlashStorage#limited-number-of-writes).
+* `EEPROM.commit()` store the EEPROM data in flash. Use this with care: Every call writes the complete EEPROM data to flash. This will reduce the remaining flash-write-cycles. Don't call this method in a loop or [you will kill your flash soon](https://gitlab.com/konnekting/KonnektingFlashStorage#limited-number-of-writes).
 
 ## License
 
@@ -76,12 +78,12 @@ This library is released under LGPL-2.1.
 ### Can I use a single FlashStorage object to store more stuff?
 
 Yes, you can declare a `struct` with more fields and create a `FlashStorage` object to
-store the entire structure. See the [StoreNameAndSurname](https://github.com/cmaglie/FlashStorage/tree/master/examples/StoreNameAndSurname/StoreNameAndSurname.ino)
+store the entire structure. See the [StoreNameAndSurname](https://gitlab.com/konnekting/KonnektingFlashStorage/-/tree/master/examples/StoreNameAndSurname/StoreNameAndSurname.ino)
 sketch for an example on how to do it.
 
 ### The content of the FlashStorage is erased each time a new sketch is uploaded?
 
-Yes, every time you upload a new sketch, the previous content of the FlashStorage is erased and filled with 0's. The FlashStorage library does not allow to set another default value.
+Yes, every time you upload a new sketch, the previous content of the FlashStorage is erased and filled with 0's. The KonnektingFlashStorage library does not allow to set another default value.
 
 ### Do you recommend to use FLASH instead of EEPROM?
 
