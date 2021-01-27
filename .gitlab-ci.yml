@@ -1,0 +1,34 @@
+image: debian:testing
+
+before_script:
+  - echo "doing before script ..."
+  - echo "doing before script ... *DONE*"
+  
+# cache the Arduino CLI setup and config from .pre
+cache:
+  paths:
+    - Arduino/**
+    - .arduino15/**  
+    - arduino-cli/**
+  
+install Arduino CLI:
+  stage: .pre
+  script:
+    - ./setup-build-env.sh . 
+
+build EmulateEEPROM:
+  stage: build
+  script:
+    - ./build.sh examples/EmulateEEPROM/EmulateEEPROM.ino arduino:samd:mzero_bl
+    
+build FlashStoreAndRetrieve:
+  stage: build
+  script:
+    - ./build.sh examples/FlashStoreAndRetrieve/FlashStoreAndRetrieve.ino arduino:samd:mzero_bl
+
+build StoreNameAndSurname:
+  stage: build
+  script:
+    - ./build.sh examples/StoreNameAndSurname/StoreNameAndSurname.ino arduino:samd:mzero_bl
+
+    
