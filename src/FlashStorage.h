@@ -58,6 +58,8 @@ public:
   void write(const volatile void *flash_ptr, const void *data, uint32_t size);
   void erase(const volatile void *flash_ptr, uint32_t size);
   void read(const volatile void *flash_ptr, void *data, uint32_t size);
+  
+  uint32_t length();
 
 private:
   void erase(const volatile void *flash_ptr);

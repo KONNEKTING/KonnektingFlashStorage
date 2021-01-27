@@ -147,3 +147,8 @@ void FlashClass::read(const volatile void *flash_ptr, void *data, uint32_t size)
   memcpy(data, (const void *)flash_ptr, size);
 }
 
+uint32_t FlashClass::length()
+{
+  return flash_size;
+}
+
